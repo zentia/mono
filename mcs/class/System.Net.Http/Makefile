@@ -41,6 +41,11 @@ ifeq (wasm,$(PROFILE))
 API_BIN_REFS := System.Net.Http.WebAssemblyHttpHandler
 endif
 
+ifneq (,$(filter unityjit unityaot,$(PROFILE)))
+LIB_MCS_FLAGS += -d:SECURITY_DEP
+LIB_REFS += Mono.Security
+endif
+
 TEST_LIB_REFS = System System.Core
 TEST_MCS_FLAGS =
 
