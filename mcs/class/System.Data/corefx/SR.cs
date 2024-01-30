@@ -112,6 +112,7 @@ partial class SR
 	public const string Data_ArgumentOutOfRange = "'{0}' argument is out of range.";
 	public const string Data_ArgumentNull = "'{0}' argument cannot be null.";
 	public const string Data_ArgumentContainsNull = "'{0}' argument contains null value.";
+	public const string Data_TypeNotAllowed = "Type '{0}' is not allowed here. See https://go.microsoft.com/fwlink/?linkid=2132227 for more details.";
 	public const string DataColumns_OutOfRange = "Cannot find column {0}.";
 	public const string DataColumns_Add1 = "Column '{0}' already belongs to this DataTable.";
 	public const string DataColumns_Add2 = "Column '{0}' already belongs to another DataTable.";

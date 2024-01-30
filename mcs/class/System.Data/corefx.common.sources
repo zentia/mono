@@ -5,6 +5,8 @@ Assembly/AssemblyInfo.cs
 ../../build/common/AssemblyRef.cs
 ../../build/common/SR.cs
 
+../../../external/corefx/src/Common/src/System/LocalAppContext.cs
+
 #
 # corefx doesn't fully cover our API yet, these files fill the gaps:
 #
@@ -119,13 +121,13 @@ corefx/DataReaderExtensions.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/ConstraintCollection.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/ConstraintConverter.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/ConstraintEnumerator.cs
-../../../external/corefx/src/System.Data.Common/src/System/Data/DataColumn.cs
+../../../external/corefx-bugfix/src/System.Data.Common/src/System/Data/DataColumn.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataColumnChangeEvent.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataColumnChangeEventHandler.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataColumnCollection.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataColumnPropertyDescriptor.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataError.cs
-../../../external/corefx/src/System.Data.Common/src/System/Data/DataException.cs
+../../../external/corefx-bugfix/src/System.Data.Common/src/System/Data/DataException.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataKey.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataRelation.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataRelationCollection.cs
@@ -140,10 +142,10 @@ corefx/DataReaderExtensions.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataRowVersion.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataRowView.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataSerializationFormat.cs
-../../../external/corefx/src/System.Data.Common/src/System/Data/DataSet.cs
+../../../external/corefx-bugfix/src/System.Data.Common/src/System/Data/DataSet.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataSetDateTime.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataSysAttribute.cs
-../../../external/corefx/src/System.Data.Common/src/System/Data/DataTable.cs
+../../../external/corefx-bugfix/src/System.Data.Common/src/System/Data/DataTable.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataTableClearEvent.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataTableClearEventHandler.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/DataTableCollection.cs
@@ -182,6 +184,7 @@ corefx/DataReaderExtensions.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/ITableMapping.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/ITableMappingCollection.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/KeyRestrictionBehavior.cs
+../../../external/corefx-bugfix/src/System.Data.Common/src/System/Data/LocalAppContextSwitches.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/LoadOption.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/MappingType.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/MergeFailedEvent.cs
@@ -210,6 +213,7 @@ corefx/DataReaderExtensions.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/StateChangeEventHandler.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/StatementType.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/StrongTypingException.cs
+../../../external/corefx-bugfix/src/System.Data.Common/src/System/Data/TypeLimiter.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/UniqueConstraint.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/UpdateRowSource.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Common/UInt64Storage.cs
@@ -258,7 +262,7 @@ corefx/DataReaderExtensions.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Common/Int16Storage.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Common/Int32Storage.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Common/Int64Storage.cs
-../../../external/corefx/src/System.Data.Common/src/System/Data/Common/ObjectStorage.cs
+../../../external/corefx-bugfix/src/System.Data.Common/src/System/Data/Common/ObjectStorage.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Common/RowUpdatedEventArgs.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Common/RowUpdatingEventArgs.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Common/SByteStorage.cs
@@ -291,7 +295,7 @@ corefx/DataReaderExtensions.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Filter/ExpressionNode.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Filter/ExpressionParser.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Filter/FilterException.cs
-../../../external/corefx/src/System.Data.Common/src/System/Data/Filter/FunctionNode.cs
+../../../external/corefx-bugfix/src/System.Data.Common/src/System/Data/Filter/FunctionNode.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Filter/IFilter.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Filter/LookupNode.cs
 ../../../external/corefx/src/System.Data.Common/src/System/Data/Filter/NameNode.cs
