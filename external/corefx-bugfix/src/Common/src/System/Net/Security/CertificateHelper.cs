@@ -5,6 +5,7 @@
 using Microsoft.Win32.SafeHandles;
 using System.Diagnostics;
 using System.Globalization;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
 namespace System.Net.Security
@@ -33,39 +34,52 @@ namespace System.Net.Security
                 return null;
             }
 
-            // Build a new collection with certs that have a private key. We need to do this manually because there is
-            // no X509FindType to match this criteria.
-            // Find(...) returns a collection of clones instead of a filtered collection, so do this before calling
-            // Find(...) to minimize the number of unnecessary allocations and finalizations.
-            var eligibleCerts = new X509Certificate2Collection();
             foreach (X509Certificate2 cert in candidateCerts)
             {
-                if (cert.HasPrivateKey)
+                if (!cert.HasPrivateKey)
+                    continue;
+
+                if (IsValidClientCertificate(cert))
+                    return cert;
+            }
+
+            return null;
+        }
+
+        private static bool IsValidClientCertificate(X509Certificate2 cert)
+        {
+            foreach (X509Extension extension in cert.Extensions)
+            {
+                if ((extension is X509EnhancedKeyUsageExtension eku) && !IsValidForClientAuthenticationEKU(eku))
                 {
-                    eligibleCerts.Add(cert);
+                    return false;
+                }
+                else if ((extension is X509KeyUsageExtension ku) && !IsValidForDigitalSignatureUsage(ku))
+                {
+                    return false;
                 }
             }
 
-            // Don't call Find(...) if we don't need to.
-            if (eligibleCerts.Count == 0)
+            return true;
+        }
+
+        private static bool IsValidForClientAuthenticationEKU(X509EnhancedKeyUsageExtension eku)
+        {
+            foreach (Oid oid in eku.EnhancedKeyUsages)
             {
-                return null;
+                if (oid.Value == ClientAuthenticationOID)
+                {
+                    return true;
+                }
             }
 
-            // Reduce the set of certificates to match the proper 'Client Authentication' criteria.
-            // Client EKU is probably more rare than the DigitalSignature KU. Filter by ClientAuthOid first to reduce
-            // the candidate space as quickly as possible.
-            eligibleCerts = eligibleCerts.Find(X509FindType.FindByApplicationPolicy, ClientAuthenticationOID, false);
-            eligibleCerts = eligibleCerts.Find(X509FindType.FindByKeyUsage, X509KeyUsageFlags.DigitalSignature, false);
+            return false;
+        }
 
-            if (eligibleCerts.Count > 0)
-            {
-                return eligibleCerts[0];
-            }
-            else
-            {
-                return null;
-            }
+        private static bool IsValidForDigitalSignatureUsage(X509KeyUsageExtension ku)
+        {
+            const X509KeyUsageFlags RequiredUsages = X509KeyUsageFlags.DigitalSignature;
+            return (ku.KeyUsages & RequiredUsages) == RequiredUsages;
         }
     }
 }
