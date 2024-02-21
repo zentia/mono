@@ -1120,6 +1120,16 @@ void* mono_unity_get_field_address(MonoObject *obj, MonoVTable *vt, MonoClassFie
 	return src;
 }
 
+MONO_API MonoClass* mono_unity_class_get_checked(MonoImage *image, guint32 token, MonoError *error)
+{
+	return mono_class_get_checked(image, token, error);
+}
+
+MONO_API MonoMethod* mono_unity_get_method_checked(MonoImage *image, guint32 token, MonoClass *klass, MonoGenericContext *context, MonoError *error)
+{
+	return mono_get_method_checked(image, token, klass, context, error);
+}
+
 MONO_API MonoClassField* mono_unity_field_from_token_checked(MonoImage *image, guint32 token, MonoClass **retklass, MonoGenericContext *context, MonoError *error)
 {
 	return mono_field_from_token_checked(image, token, retklass, context, error);
