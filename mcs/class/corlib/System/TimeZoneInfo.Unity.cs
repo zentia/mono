@@ -58,10 +58,12 @@ namespace System {
 			if(data[(int)TimeZoneData.DaylightDeltaIdx] == 0)
 				return rulesForYear;
 
-			// If the first and second transition DateTime objects are the same, ValidateAdjustmentRule will throw
-			// an exception. I'm unsure why these would be the same, but we do see that occur for some locales.
+			// If the first and second transition DateTime objects have the same time, day and month, ValidateAdjustmentRule will throw
+			// an exception. This appears to be due to the GetTimeZoneData icall occasionally returning garbage data on some platforms.
 			// In that case, just exit early.
-			if (firstTransition.Equals(secondTransition))
+			if (firstTransition.TimeOfDay.Equals(secondTransition.TimeOfDay)
+				&& firstTransition.Month.Equals(secondTransition.Month)
+				&& firstTransition.Day.Equals(secondTransition.Day))
 				return rulesForYear;
 
 			var beginningOfYear = new DateTime (year, 1, 1, 0, 0, 0, 0);
