@@ -501,7 +501,7 @@ namespace System.Xml {
 
         void Initialize(XmlResolver resolver) {
             nameTable = null;
-#if !SILVERLIGHT && !MOBILE
+#if (!SILVERLIGHT && !MOBILE) || UNITY_AOT
             if (!EnableLegacyXmlSettings())
             {
                 xmlResolver = resolver;
