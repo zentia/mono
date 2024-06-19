@@ -58,6 +58,10 @@
 #endif
 #include <mono/metadata/w32error.h>
 
+#ifdef HOST_WIN32
+#include <mono/metadata/mono-encrypt.h>
+#endif
+
 #define INVALID_ADDRESS 0xffffffff
 
 // Amount initially reserved in each image's mempool.
@@ -2024,21 +2028,49 @@ mono_image_open_from_data_internal (MonoAssemblyLoadContext *alc, char *data, gu
 	MonoImage *image;
 	char *datac;
 
+#if HOST_WIN32
+	char* input_data;
+	void* decrypted_data = NULL;
+	uint64_t decrypted_data_len = 0;
+#endif
+
 	if (!data || !data_len) {
 		if (status)
 			*status = MONO_IMAGE_IMAGE_INVALID;
 		return NULL;
 	}
+
+#if HOST_WIN32
+	input_data = data;
+
+	if (mono_is_buffer_encrypted(data, data_len))
+	{
+		if (mono_assembly_get_data_from_data(data, data_len, &decrypted_data, &decrypted_data_len) > 0 && decrypted_data != NULL && decrypted_data_len > 0)
+		{
+			data = decrypted_data;
+			data_len = (guint32)decrypted_data_len;
+		}
+	}
+#endif
+
 	datac = data;
 	if (need_copy) {
 		datac = (char *)g_try_malloc (data_len);
 		if (!datac) {
 			if (status)
 				*status = MONO_IMAGE_ERROR_ERRNO;
+
+#if HOST_WIN32
+			mono_assembly_data_destroy(decrypted_data);
+#endif
 			return NULL;
 		}
 		memcpy (datac, data, data_len);
 	}
+
+#if HOST_WIN32
+	mono_assembly_data_destroy(decrypted_data);
+#endif
 
 	MonoImageStorage *storage = mono_image_storage_new_raw_data (datac, data_len, need_copy, filename);
 	image = g_new0 (MonoImage, 1);

@@ -315,7 +315,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MonoSourceLocation)\mono\mini\mini-windows-dllmain.c" />
+    <ClCompile Include="..\mono\metadata\mono-encrypt.c" />
     <ClCompile Include="..\mono\metadata\oop.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\mono\metadata\mono-encrypt.h" />
   </ItemGroup>
   <Import Project="clrcompression.targets" />
   <Import Project="eglib.targets" />

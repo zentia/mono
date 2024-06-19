@@ -43,5 +43,13 @@
     <MASM Include="$(MonoSourceLocation)\mono\utils\winarm64.asm">
       <Filter>Resource Files\libmonoutils\arch\arm64</Filter>
     </MASM>
+    <ClCompile Include="..\mono\metadata\mono-encrypt.c">
+      <Filter>Source Files\libmonoruntime\win32</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\mono\metadata\mono-encrypt.h">
+      <Filter>Header Files\libmonoruntime\win32</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
