@@ -258,12 +258,16 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\mono\metadata\mono-encrypt.c" />
     <ClCompile Include="..\tools\pedump\pedump.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="libmono-static.vcxproj">
       <Project>{cb0d9e92-293c-439c-9ac7-c5f59b6e0772}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\mono\metadata\mono-encrypt.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,6 +4,9 @@
     <ClCompile Include="..\tools\pedump\pedump.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\mono\metadata\mono-encrypt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -15,5 +18,10 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{699de579-6295-481f-be9a-b8aaadad1b0e}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\mono\metadata\mono-encrypt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

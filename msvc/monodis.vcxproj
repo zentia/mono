@@ -263,6 +263,7 @@
     <ClCompile Include="..\mono\dis\dump.c" />
     <ClCompile Include="..\mono\dis\get.c" />
     <ClCompile Include="..\mono\dis\main.c" />
+    <ClCompile Include="..\mono\metadata\mono-encrypt.c" />
     <ClCompile Include="..\mono\metadata\opcodes.c" />
     <ClCompile Include="..\mono\dis\util.c" />
   </ItemGroup>
@@ -274,6 +275,7 @@
     <ClInclude Include="..\mono\dis\meta.h" />
     <ClInclude Include="..\mono\dis\push-pop.h" />
     <ClInclude Include="..\mono\dis\util.h" />
+    <ClInclude Include="..\mono\metadata\mono-encrypt.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="libmono-static.vcxproj">
